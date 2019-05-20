@@ -57,8 +57,8 @@ public class ProducerServiceBean implements ProducerService {
 		
 		producers.parallelStream().forEach(producer -> intervals.addAll(convertProducerToIntervalDTO(producer)));
 		
-		minMaxDTO.setMin(intervals.stream().min(ProducerIntervalDTO::compareTo).orElse(null));
-		minMaxDTO.setMax(intervals.stream().max(ProducerIntervalDTO::compareTo).orElse(null));
+		minMaxDTO.addMin(intervals.stream().min(ProducerIntervalDTO::compareTo).orElse(null));
+		minMaxDTO.addMax(intervals.stream().max(ProducerIntervalDTO::compareTo).orElse(null));
 
 		return minMaxDTO;
 	}
